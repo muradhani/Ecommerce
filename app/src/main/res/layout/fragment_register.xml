@@ -1,80 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.RegisterFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.ecommerce.viewModels.RegisterViewModel" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/blury_background"
-        android:scaleType="centerCrop"/>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        tools:context=".fragments.RegisterFragment">
 
-        <TextView
-            android:id="@+id/textView"
-            style="@style/h4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_50sdp"
-            android:drawableEnd="@drawable/ic_kleine_shape"
-            android:drawablePadding="@dimen/_5sdp"
-            android:text="Kleine."
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/blury_background"
+            android:scaleType="centerCrop" />
 
-        <TextView
-            android:id="@+id/main_text"
-            style="@style/h4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/right_address"
-            android:textAlignment="center"
-            android:layout_marginTop="@dimen/_20sdp"
-            app:layout_constraintBottom_toTopOf="@+id/quality"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/quality"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:text="@string/quality"
-            android:textAlignment="center"
-            style="@style/h2"
+            <TextView
+                android:id="@+id/textView"
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:drawableEnd="@drawable/ic_kleine_shape"
+                android:drawablePadding="@dimen/_5sdp"
+                android:text="Kleine."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_text" />
+            <TextView
+                android:id="@+id/main_text"
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:gravity="center"
+                android:text="Let's Register"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@+id/quality"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/appCompatButton"
-            style="@style/blueButtonStyle"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/quality" />
+            <TextView
+                android:id="@+id/quality"
+                style="@style/h2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="Do you have any account ? login"
+                android:textAlignment="center"
 
-        <androidx.appcompat.widget.AppCompatButton
-            style="@style/whiteButtonStyle"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="wrap_content"
-            android:text="Register"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatButton" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/main_text" />
 
-</FrameLayout>
+            <EditText
+                android:id="@+id/ed_first_name"
+                style="@style/editText"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@={viewModel.user.firstName}"
+                android:hint="First Name"
+                app:layout_constraintTop_toBottomOf="@+id/quality"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart" />
+
+            <EditText
+                android:id="@+id/ed_last_name"
+                style="@style/editText"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@={viewModel.user.lastName}"
+                android:hint="Last Name"
+                app:layout_constraintTop_toBottomOf="@+id/ed_first_name"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart" />
+
+            <EditText
+                android:id="@+id/ed_email"
+                style="@style/editText"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@={viewModel.user.email}"
+                android:hint="email"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/ed_last_name" />
+
+            <EditText
+                android:id="@+id/ed_password"
+                style="@style/editText"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@={viewModel.user.password}"
+                android:hint="password"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/ed_email" />
+
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                showingLoading="@{viewModel.register}"
+                app:layout_constraintBottom_toBottomOf="@+id/appCompatButton"
+                app:layout_constraintEnd_toEndOf="@+id/appCompatButton"
+                app:layout_constraintStart_toStartOf="@+id/appCompatButton"
+                app:layout_constraintTop_toTopOf="@+id/appCompatButton" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/appCompatButton"
+                style="@style/blueButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:text="Login"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@id/ed_password" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".9" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>

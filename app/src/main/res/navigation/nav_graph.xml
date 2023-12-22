@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/introductionFragment">
+
+    <fragment
+        android:id="@+id/introductionFragment"
+        android:name="com.example.ecommerce.fragments.IntroductionFragment"
+        android:label="IntroductionFragment"
+        tools:layout="@layout/fragment_introduction">
+        <action
+            android:id="@+id/action_introductionFragment_to_loginRegisterFragment"
+            app:destination="@id/loginRegisterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.ecommerce.fragments.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginRegisterFragment"
+        android:name="com.example.ecommerce.fragments.LoginRegisterFragment"
+        android:label="LoginRegisterFragment"
+        tools:layout="@layout/fragment_login_register">
+        <action
+            android:id="@+id/action_loginRegisterFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginRegisterFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileSettingsFragment"
+        android:name="com.example.ecommerce.fragments.ProfileSettingsFragment"
+        android:label="ProfileSettingsFragment"
+        tools:layout="@layout/fragment_profile_settings"/>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.ecommerce.fragments.RegisterFragment"
+        android:label="RegisterFragment"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+</navigation>

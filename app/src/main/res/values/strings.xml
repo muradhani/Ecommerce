@@ -2,4 +2,6 @@
     <string name="app_name">Ecommerce</string>
     <string name="right_address">The right Address\nfor Shopping\nAnyday</string>
     <string name="quality">its now very easy to reach the\nbest quality among the\nproducts on the internet</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

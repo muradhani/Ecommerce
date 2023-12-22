@@ -6,28 +6,39 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.ecommerce.R
+import com.example.ecommerce.databinding.FragmentIntroductionBinding
 import com.example.ecommerce.viewModels.IntroductionViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class IntroductionFragment : Fragment() {
+    private val viewModel: IntroductionViewModel by viewModels()
+    private lateinit var binding : FragmentIntroductionBinding
 
-    companion object {
-        fun newInstance() = IntroductionFragment()
-    }
-
-    private lateinit var viewModel: IntroductionViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_introduction, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_introduction,container,false)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(IntroductionViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initStartButton()
     }
 
+    private fun initStartButton() {
+        binding.btnStart.setOnClickListener {
+            findNavController().navigate(R.id.action_introductionFragment_to_loginRegisterFragment)
+        }
+    }
 }

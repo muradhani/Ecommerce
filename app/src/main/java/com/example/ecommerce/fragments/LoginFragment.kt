@@ -6,28 +6,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import com.example.ecommerce.R
+import com.example.ecommerce.databinding.FragmentLoginBinding
 import com.example.ecommerce.viewModels.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = LoginFragment()
-    }
-
-    private lateinit var viewModel: LoginViewModel
-
+    private  val viewModel: LoginViewModel by viewModels()
+    lateinit var binding :FragmentLoginBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_login,container,false)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }
