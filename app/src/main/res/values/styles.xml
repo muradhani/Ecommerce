@@ -43,10 +43,14 @@
         <item name="android:fontFamily">@font/poppins_light</item>
     </style>
 
-
-    <dimen name="h4TextSize">35sp</dimen>
-    <dimen name="h2TextSize">17sp</dimen>
-    <dimen name="h3TextSize">22sp</dimen>
+    <style name="progressBar">
+        <item name="android:color">@color/g_blue</item>
+        <item name="android:progressTint">@color/g_blue</item>
+        <item name="android:progressBackgroundTintMode">@color/g_blue</item>
+    </style>
+    <dimen name="h4TextSize">27sp</dimen>
+    <dimen name="h2TextSize">15sp</dimen>
+    <dimen name="h3TextSize">20sp</dimen>
 
 
 </resources>

@@ -29,7 +29,7 @@
                 style="@style/h4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_30sdp"
                 android:drawableEnd="@drawable/ic_kleine_shape"
                 android:drawablePadding="@dimen/_5sdp"
                 android:text="Kleine."
@@ -47,8 +47,8 @@
                 android:text="Let's Register"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toTopOf="@+id/quality"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <TextView
@@ -60,8 +60,8 @@
                 android:text="Do you have any account ? login"
                 android:textAlignment="center"
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
                 app:layout_constraintTop_toBottomOf="@+id/main_text" />
 
             <EditText
@@ -98,7 +98,9 @@
                 android:hint="email"
                 app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintTop_toBottomOf="@+id/ed_last_name" />
+                app:layout_constraintTop_toBottomOf="@+id/ed_last_name"
+                android:afterTextChanged="@{(s)->viewModel.onTextChanged(s)}"
+                emailExistState="@{viewModel.emailExist}"/>
 
             <EditText
                 android:id="@+id/ed_password"
@@ -114,10 +116,13 @@
 
 
             <ProgressBar
+                style="@style/progressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                showingLoading="@{viewModel.register}"
+                android:visibility="visible"
+                android:progressTint="@color/g_blue"
+                android:preferKeepClear="true"
+                app:showingLoading="@{viewModel.register}"
                 app:layout_constraintBottom_toBottomOf="@+id/appCompatButton"
                 app:layout_constraintEnd_toEndOf="@+id/appCompatButton"
                 app:layout_constraintStart_toStartOf="@+id/appCompatButton"
@@ -127,9 +132,11 @@
                 android:id="@+id/appCompatButton"
                 style="@style/blueButtonStyle"
                 android:layout_width="0dp"
+                android:visibility="visible"
                 android:layout_height="wrap_content"
-
-                android:text="Login"
+                hidingLoading="@{viewModel.register}"
+                android:onClick="@{()-> viewModel.registerUser()}"
+                android:text="Register"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
@@ -140,14 +147,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent=".1" />
+                app:layout_constraintGuide_percent=".15" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guidelineEnd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent=".9" />
+                app:layout_constraintGuide_percent=".85" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

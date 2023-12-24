@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
 }
@@ -70,4 +71,5 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:2.7.5"
     implementation project(":domain")
     implementation project(":data")
+
 }
