@@ -11,7 +11,6 @@ import javax.inject.Inject
 
 class ValidateEmailRegisterUseCase @Inject constructor(
     private val repo: UserRepoInterface,
-    private val checkEmailExsitanceUseCase :CheckIfEmailExistUseCase
 ){
     lateinit var state : State<ValidateEmailState>
     suspend operator fun invoke(email:String):Flow<ValidateEmailState>{
@@ -28,18 +27,7 @@ class ValidateEmailRegisterUseCase @Inject constructor(
     private suspend fun validateEmail(email: String):ValidateEmailState{
         lateinit var state :ValidateEmailState
         if (Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            checkEmailExsitanceUseCase(email).collect{
-                when(it){
-                    is CheckEmailExistenceState.EmailExist -> {
-                        state =  ValidateEmailState.EmailExist
-                    }
-                    is CheckEmailExistenceState.EmailNotExist -> {
-                        state = ValidateEmailState.validEmail
-                    }
-
-                    else -> {}
-                }
-            }
+            state = ValidateEmailState.validEmail
         }else{
             state = ValidateEmailState.InvalidEmail
         }

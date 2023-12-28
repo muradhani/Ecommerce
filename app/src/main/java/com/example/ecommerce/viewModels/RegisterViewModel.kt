@@ -67,10 +67,10 @@ class RegisterViewModel @Inject constructor(
     fun onTextChanged(s: CharSequence?) {
         emailJob?.cancel()
         emailJob = viewModelScope.launch {
-            delay(2000)
-            checkEmailExsitanceUseCase(s.toString()).collect {
-                _emailExist.postValue(it)
-            }
+//            delay(2000)
+//            checkEmailExsitanceUseCase(s.toString()).collect {
+//                _emailExist.postValue(it)
+//            }
         }
     }
 }

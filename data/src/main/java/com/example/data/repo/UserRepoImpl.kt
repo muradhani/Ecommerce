@@ -2,8 +2,10 @@ package com.example.data.repo
 
 import com.example.domain.models.states.State
 import com.example.domain.repo.UserRepoInterface
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.SignInMethodQueryResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -41,20 +43,23 @@ class UserRepoImpl @Inject constructor(
     override fun checkIfEmailAlreadyExist(email: String): Flow<State<String>> {
        return flow {
            try {
-               val result = suspendCoroutine{ continuation ->
-                   firebaseAuth.fetchSignInMethodsForEmail(email).addOnCompleteListener { task ->
-                       continuation.resume(task.result)
-                   }
-               }
+               val result = Tasks.await(firebaseAuth.fetchSignInMethodsForEmail(email))
 
-               if (result != null && result.signInMethods != null && result.signInMethods!!.isNotEmpty()) {
-                   emit(State.Success(result.toString()))
+               if (result.signInMethods != null && result.signInMethods!!.isNotEmpty()) {
+                   // Email exists, handle accordingly
+                   emit(State.Success("Email already exists"))
                } else {
-                   emit(State.Success(""))
+                   // Email does not exist
+                   emit(State.Success("Email does not exist"))
                }
+           } catch (e: FirebaseAuthInvalidUserException) {
+               // This exception is thrown if the email is not registered
+               emit(State.Success("Email does not exist"))
            } catch (e: Exception) {
+               // Handle other exceptions
                emit(State.Error("Error checking email existence: ${e.message}"))
            }
+
        }
     }
 }
