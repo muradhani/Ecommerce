@@ -2,8 +2,6 @@ package com.example.ecommerce.bindingAdapters
 
 import android.view.View
 import android.widget.TextView
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.example.domain.models.states.CheckEmailExistenceState
 import com.example.domain.models.states.State

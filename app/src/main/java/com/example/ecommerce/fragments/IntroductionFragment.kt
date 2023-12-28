@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.ecommerce.R
@@ -33,12 +34,22 @@ class IntroductionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        checkifIntroductionFragmentOpenedBefore()
         initStartButton()
+    }
+
+    private fun checkifIntroductionFragmentOpenedBefore() {
+        viewModel.showOnboarding.observe(viewLifecycleOwner, Observer {
+            if (!it){
+                findNavController().navigate(R.id.action_introductionFragment_to_loginRegisterFragment)
+            }
+        })
     }
 
     private fun initStartButton() {
         binding.btnStart.setOnClickListener {
             findNavController().navigate(R.id.action_introductionFragment_to_loginRegisterFragment)
+            viewModel.markOnboardingAsShown()
         }
     }
 }
