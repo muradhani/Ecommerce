@@ -5,6 +5,8 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.example.domain.models.states.CheckEmailExistenceState
 import com.example.domain.models.states.State
+import com.example.domain.models.states.ValidateEmailState
+import com.example.domain.models.states.ValidatePasswordState
 
 @BindingAdapter(value = ["showingLoading"])
 fun <T> showingLoading(view : View, state: State<T>?){
@@ -20,14 +22,46 @@ fun <T> hidingLoading(view : View, state: State<T>?){
         else -> view.visibility = View.VISIBLE
     }
 }
-@BindingAdapter("emailExistState")
+@BindingAdapter(value = ["emailExistState"])
 fun setEmailExistState(textView: TextView, state: CheckEmailExistenceState?) {
     when (state) {
-        CheckEmailExistenceState.EmailExist -> {
+        is CheckEmailExistenceState.EmailExist -> {
             textView.error = "This email already exists."
 
         }
-        CheckEmailExistenceState.EmailNotExist -> {
+        is CheckEmailExistenceState.EmailNotExist -> {
+        }
+        // Handle other states if needed
+        else -> {}
+    }
+}
+
+@BindingAdapter(value=["emailValidate"])
+fun EmailValidate(textView: TextView, state: ValidateEmailState?) {
+    when (state) {
+        is ValidateEmailState.EmailExist -> {
+            textView.error = "This email already exists."
+
+        }
+        is ValidateEmailState.Error -> {
+            textView.error =state.message
+
+        }
+        is ValidateEmailState.validEmail -> {
+        }
+        // Handle other states if needed
+        else -> {}
+    }
+}
+
+@BindingAdapter(value=["passwordValidate"])
+fun passwordValidate(textView: TextView, state: ValidatePasswordState?) {
+    when (state) {
+        is ValidatePasswordState.Error -> {
+            textView.error = "This email already exists."
+
+        }
+        is ValidatePasswordState.ValidPassword -> {
         }
         // Handle other states if needed
         else -> {}

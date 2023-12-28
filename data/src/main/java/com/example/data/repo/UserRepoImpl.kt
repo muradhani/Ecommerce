@@ -47,7 +47,7 @@ class UserRepoImpl @Inject constructor(
                    }
                }
 
-               if (result != null && result.signInMethods != null) {
+               if (result != null && result.signInMethods != null && result.signInMethods!!.isNotEmpty()) {
                    emit(State.Success(result.toString()))
                } else {
                    emit(State.Success(""))

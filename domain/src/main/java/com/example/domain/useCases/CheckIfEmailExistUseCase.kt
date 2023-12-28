@@ -12,6 +12,7 @@ class CheckIfEmailExistUseCase @Inject constructor(
 ) {
     suspend operator fun invoke(email: String) : Flow<CheckEmailExistenceState>{
         return flow {
+            emit(CheckEmailExistenceState.Loading)
             repo.checkIfEmailAlreadyExist(email).collect{state ->
                 when (state) {
                     is State.Success -> {
