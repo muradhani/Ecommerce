@@ -142,7 +142,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintTop_toBottomOf="@id/ed_password" />
+                app:layout_constraintTop_toBottomOf="@id/ed_password"
+                showSnackbar="@{viewModel.register}"/>
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guidelineStart"

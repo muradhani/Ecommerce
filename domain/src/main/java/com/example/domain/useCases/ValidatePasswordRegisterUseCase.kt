@@ -9,11 +9,16 @@ import javax.inject.Inject
 class ValidatePasswordRegisterUseCase @Inject constructor() {
     suspend operator fun invoke(password:String): Flow<ValidatePasswordState> {
         return flow{
-            if (password.length < 8){
-                emit(ValidatePasswordState.Error("the password cannot be shorter than 8 characters"))
-            }
-            else{
-                emit(ValidatePasswordState.ValidPassword)
+            if (password.isNotEmpty()){
+                if (password.length < 8){
+                    emit(ValidatePasswordState.Error("the password cannot be shorter than 8 characters"))
+                }
+                else{
+                    emit(ValidatePasswordState.ValidPassword)
+                }
+            }else{
+                emit(ValidatePasswordState.Error("the password cannot be empty"))
+
             }
         }
     }

@@ -40,8 +40,7 @@ class RegisterViewModel @Inject constructor(
     val passwordValidation: LiveData<ValidatePasswordState> = _passwordValidation
     fun registerUser() {
         viewModelScope.launch {
-            user.value?.takeIf { it.email.isNotEmpty() && it.password.isNotEmpty() }
-                ?.let { user ->
+            user.value?.let { user ->
                     validateEmail(user.email).collect { validateEmailState ->
                         if (validateEmailState is ValidateEmailState.validEmail) {
                             validatePassword(user.password).collect { it ->
