@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_introduction">
         <action
             android:id="@+id/action_introductionFragment_to_loginRegisterFragment"
-            app:destination="@id/loginRegisterFragment" />
+            app:destination="@id/loginRegisterFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

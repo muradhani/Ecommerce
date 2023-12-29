@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.ecommerce.R
@@ -41,7 +42,11 @@ class IntroductionFragment : Fragment() {
     private fun checkifIntroductionFragmentOpenedBefore() {
         viewModel.showOnboarding.observe(viewLifecycleOwner, Observer {
             if (!it){
-                findNavController().navigate(R.id.action_introductionFragment_to_loginRegisterFragment)
+                val navOptions = NavOptions.Builder()
+                    .setPopUpTo(R.id.introductionFragment, true)
+                    .build()
+
+                findNavController().navigate(R.id.action_introductionFragment_to_loginRegisterFragment, null, navOptions)
             }
         })
     }

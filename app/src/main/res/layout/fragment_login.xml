@@ -69,9 +69,12 @@
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
                 app:layout_constraintTop_toBottomOf="@+id/quality"
                 style="@style/editText"
+                android:text="@={viewModel.user.email}"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:layout_marginTop="@dimen/_30sdp" />
+                android:layout_marginTop="@dimen/_30sdp"
+                emailValidate="@{viewModel.emailValidation}"
+                passwordValidate="@{viewModel.passwordValidation}"/>
 
             <EditText
                 android:id="@+id/edTextEPasswordLogin"
@@ -79,6 +82,7 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_15sdp"
+                android:text="@={viewModel.user.password}"
                 android:hint="Password"
                 android:inputType="textEmailAddress"
                 app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
@@ -103,10 +107,26 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Login"
+                hidingLoading="@{viewModel.login}"
+                showSnackbar="@{viewModel.login}"
+                android:onClick="@{()-> viewModel.login()}"
                 android:layout_marginTop="@dimen/_15sdp"
                 app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
                 app:layout_constraintTop_toBottomOf="@id/tvForgotPasswordLogin" />
+
+            <ProgressBar
+                style="@style/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:preferKeepClear="true"
+                android:progressTint="@color/g_blue"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/loginBtn"
+                app:layout_constraintEnd_toEndOf="@+id/loginBtn"
+                app:layout_constraintStart_toStartOf="@+id/loginBtn"
+                app:layout_constraintTop_toTopOf="@+id/loginBtn"
+                app:showingLoading="@{viewModel.login}" />
 
             <TextView
                 android:layout_width="wrap_content"

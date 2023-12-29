@@ -1,7 +1,8 @@
-package com.example.ecommerce
+package com.example.ecommerce.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.ecommerce.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

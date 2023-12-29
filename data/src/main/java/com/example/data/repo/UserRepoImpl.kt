@@ -17,9 +17,12 @@ import kotlin.coroutines.suspendCoroutine
 
 class UserRepoImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth
-): UserRepoInterface {
-    override  fun createAccountWithEmailAndPassword(email: String, password: String) : Flow<State<String>> {
-        return  flow {
+) : UserRepoInterface {
+    override suspend fun createAccountWithEmailAndPassword(
+        email: String,
+        password: String
+    ): Flow<State<String>> {
+        return flow {
             try {
                 emit(State.Loading)
                 val authResult = suspendCoroutine<AuthResult> { continuation ->
@@ -40,26 +43,49 @@ class UserRepoImpl @Inject constructor(
         }
     }
 
-    override fun checkIfEmailAlreadyExist(email: String): Flow<State<String>> {
-       return flow {
-           try {
-               val result = Tasks.await(firebaseAuth.fetchSignInMethodsForEmail(email))
+    override suspend fun checkIfEmailAlreadyExist(email: String): Flow<State<String>> {
+        return flow {
+            try {
+                val result = Tasks.await(firebaseAuth.fetchSignInMethodsForEmail(email))
 
-               if (result.signInMethods != null && result.signInMethods!!.isNotEmpty()) {
-                   // Email exists, handle accordingly
-                   emit(State.Success("Email already exists"))
-               } else {
-                   // Email does not exist
-                   emit(State.Success("Email does not exist"))
-               }
-           } catch (e: FirebaseAuthInvalidUserException) {
-               // This exception is thrown if the email is not registered
-               emit(State.Success("Email does not exist"))
-           } catch (e: Exception) {
-               // Handle other exceptions
-               emit(State.Error("Error checking email existence: ${e.message}"))
-           }
+                if (result.signInMethods != null && result.signInMethods!!.isNotEmpty()) {
+                    // Email exists, handle accordingly
+                    emit(State.Success("Email already exists"))
+                } else {
+                    // Email does not exist
+                    emit(State.Success("Email does not exist"))
+                }
+            } catch (e: FirebaseAuthInvalidUserException) {
+                // This exception is thrown if the email is not registered
+                emit(State.Success("Email does not exist"))
+            } catch (e: Exception) {
+                // Handle other exceptions
+                emit(State.Error("Error checking email existence: ${e.message}"))
+            }
 
-       }
+        }
+    }
+
+    override suspend fun loginWithEmailAndPassword(
+        email: String,
+        password: String
+    ): Flow<State<String>> {
+        return flow {
+            try {
+                emit(State.Loading)
+                var result = suspendCoroutine<AuthResult> { continuation ->
+                    firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
+                        continuation.resume(it)
+                    }.addOnFailureListener {
+                        continuation.resumeWithException(it)
+                    }
+                }
+                emit(State.Success(result.user!!.uid))
+            }catch (e:Exception){
+                emit(State.Error(e.toString()))
+            }
+
+
+        }
     }
 }
