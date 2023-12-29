@@ -7,6 +7,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.example.ecommerce.R
 import com.example.ecommerce.databinding.ActivityShoppoingBinding
 
 class ShoppoingActivity : AppCompatActivity() {
@@ -18,22 +20,7 @@ class ShoppoingActivity : AppCompatActivity() {
 
         binding = ActivityShoppoingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-//        setSupportActionBar(binding.toolbar)
-//
-//        val navController = findNavController(R.id.nav_host_fragment_content_shoppoing)
-//        appBarConfiguration = AppBarConfiguration(navController.graph)
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-//
-//        binding.fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
-//        }
+        binding.bottomNav.setupWithNavController(findNavController(R.id.nav_host_fragment))
     }
 
-//    override fun onSupportNavigateUp(): Boolean {
-//        val navController = findNavController(R.id.nav_host_fragment_content_shoppoing)
-//        return navController.navigateUp(appBarConfiguration)
-//                || super.onSupportNavigateUp()
-//    }
 }
