@@ -7,6 +7,9 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowTranslucentStatus">true</item>
     </style>
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/g_blue_gray200</item>
+    </style>
 
     <style name="Theme.Ecommerce" parent="Base.Theme.Ecommerce" />
 </resources>

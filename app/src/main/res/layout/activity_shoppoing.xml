@@ -23,7 +23,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/bottom_nav_menu"
             app:itemIconTint="@drawable/bottom_nav_item_background"
-            android:background="@drawable/bottom_navigation_background"/>
+            android:background="@drawable/bottom_navigation_background"
+            app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"/>
 
         <fragment
             android:id="@+id/nav_host_fragment"
