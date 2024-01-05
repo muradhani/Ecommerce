@@ -37,14 +37,14 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val categotiesFramgments = arrayListOf<Fragment>(
-            MainCategoryFragment(),
-            ChairFragment(),
-            CupBoardFragment(),
-            TableFragment(),
-            AccessoryFragment(),
-            FurnitureFragment()
-        )
+//        val categotiesFramgments = arrayListOf<Fragment>(
+//            MainCategoryFragment(),
+//            ChairFragment(),
+//            CupBoardFragment(),
+//            TableFragment(),
+//            AccessoryFragment(),
+//            FurnitureFragment()
+//        )
         val viewPagerAdapter = HomeViewPagerAdapter(categotiesFramgments,childFragmentManager,lifecycle)
         binding.viewPager.adapter = viewPagerAdapter
         TabLayoutMediator(binding.tabLayout,binding.viewPager){tab , position ->
