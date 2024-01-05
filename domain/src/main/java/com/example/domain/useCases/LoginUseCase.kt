@@ -11,7 +11,7 @@ class LoginUseCase @Inject constructor(
     private val validateEmailRegisterUseCase: ValidateEmailRegisterUseCase,
     private val repo: UserRepoInterface
 ){
-    operator suspend fun invoke(email : String,password : String): Flow<UserLoginState> {
+    suspend operator fun invoke(email : String, password : String): Flow<UserLoginState> {
         return flow {
             emit(UserLoginState.Loading)
                     repo.loginWithEmailAndPassword(email,password).collect{

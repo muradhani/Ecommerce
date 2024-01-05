@@ -12,7 +12,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.RegisterFragment">
+        tools:context=".fragments.loginRegister.RegisterFragment">
 
         <ImageView
             android:layout_width="match_parent"
@@ -84,7 +84,7 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:text="@={viewModel.user.password}"
                 android:hint="Password"
-                android:inputType="textEmailAddress"
+                android:inputType="textPassword"
                 app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"

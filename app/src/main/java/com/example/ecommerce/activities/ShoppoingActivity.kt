@@ -10,7 +10,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.ecommerce.R
 import com.example.ecommerce.databinding.ActivityShoppoingBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ShoppoingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityShoppoingBinding

@@ -1,7 +1,6 @@
-package com.example.ecommerce.fragments
+package com.example.ecommerce.fragments.loginRegister
 
 import android.content.Intent
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

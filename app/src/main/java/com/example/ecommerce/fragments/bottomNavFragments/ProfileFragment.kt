@@ -1,4 +1,4 @@
-package com.example.ecommerce.fragments
+package com.example.ecommerce.fragments.bottomNavFragments
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle

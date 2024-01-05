@@ -15,7 +15,7 @@ import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
 
-class UserRepoImpl @Inject constructor(
+class UserRepoImpl constructor(
     private val firebaseAuth: FirebaseAuth
 ) : UserRepoInterface {
     override suspend fun createAccountWithEmailAndPassword(

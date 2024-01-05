@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/introductionFragment"
-        android:name="com.example.ecommerce.fragments.IntroductionFragment"
+        android:name="com.example.ecommerce.fragments.loginRegister.IntroductionFragment"
         android:label="IntroductionFragment"
         tools:layout="@layout/fragment_introduction">
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.ecommerce.fragments.LoginFragment"
+        android:name="com.example.ecommerce.fragments.loginRegister.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginRegisterFragment"
-        android:name="com.example.ecommerce.fragments.LoginRegisterFragment"
+        android:name="com.example.ecommerce.fragments.loginRegister.LoginRegisterFragment"
         android:label="LoginRegisterFragment"
         tools:layout="@layout/fragment_login_register">
         <action
@@ -38,12 +38,12 @@
     </fragment>
     <fragment
         android:id="@+id/profileSettingsFragment"
-        android:name="com.example.ecommerce.fragments.ProfileSettingsFragment"
+        android:name="com.example.ecommerce.fragments.loginRegister.ProfileSettingsFragment"
         android:label="ProfileSettingsFragment"
         tools:layout="@layout/fragment_profile_settings"/>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.ecommerce.fragments.RegisterFragment"
+        android:name="com.example.ecommerce.fragments.loginRegister.RegisterFragment"
         android:label="RegisterFragment"
         tools:layout="@layout/fragment_register">
         <action
