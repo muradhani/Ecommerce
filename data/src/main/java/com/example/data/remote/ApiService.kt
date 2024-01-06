@@ -9,11 +9,11 @@ import retrofit2.http.Query
 
 interface ApiService {
     @GET("products")
-    fun getProduct(@Query("id") userId:Int) : Response<ProductResponse>
+    suspend fun getProduct(@Query("id") userId:Int) : Response<ProductResponse>
 
-    @GET("/products/categories")
-    fun getCategories():Response<AllCategoriesResponse>
+    @GET("products/categories")
+    suspend fun getCategories():Response<List<String>>
 
-    @GET("/products/category/{category}")
-    fun getProductsInCategory(@Path("category") category: String):Response<List<ProductResponse>>
+    @GET("products/category/{category}")
+    suspend fun getProductsInCategory(@Path("category") category: String):Response<List<ProductResponse>>
 }
