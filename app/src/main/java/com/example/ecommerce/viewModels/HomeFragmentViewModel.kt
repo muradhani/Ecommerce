@@ -14,7 +14,8 @@ class HomeFragmentViewModel @Inject constructor(
 ): ViewModel() {
 init {
     viewModelScope.launch {
-        Log.i("main",getAllCategoriesUseCase().toString())
+        val result = getAllCategoriesUseCase()
+        Log.i("main",result.toString())
     }
 }
 }
