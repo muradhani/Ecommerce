@@ -1,6 +1,7 @@
 package com.example.ecommerce.activities
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -23,6 +24,7 @@ class ShoppoingActivity : AppCompatActivity() {
         binding = ActivityShoppoingBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.bottomNav.setupWithNavController(findNavController(R.id.nav_host_fragment))
+        Log.i("main","hello")
     }
 
 }
