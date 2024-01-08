@@ -24,7 +24,6 @@ class ShoppoingActivity : AppCompatActivity() {
         binding = ActivityShoppoingBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.bottomNav.setupWithNavController(findNavController(R.id.nav_host_fragment))
-        Log.i("main","hello")
     }
 
 }
