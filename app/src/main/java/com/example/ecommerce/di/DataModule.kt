@@ -1,15 +1,22 @@
 package com.example.ecommerce.di
 
+import com.example.data.dto.ProductResponse
+import com.example.data.mapper.ProductMapper
 import com.example.data.remote.ApiService
 import com.example.data.repo.CategoriesRepoImpl
 import com.example.data.repo.UserRepoImpl
+import com.example.domain.entities.Product
+import com.example.domain.mapper.Mapper
 import com.example.domain.repo.CategoriesRepoInterface
 import com.example.domain.repo.UserRepoInterface
 import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityRetainedComponent
 import dagger.hilt.android.components.FragmentComponent
+import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.FragmentScoped
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -25,8 +32,13 @@ object DataModule {
         return UserRepoImpl(firebaseAuth)
     }
     @Provides
-    fun provideCategoryRepo(apiService: ApiService): CategoriesRepoInterface {
-        return CategoriesRepoImpl(apiService)
+    fun productMapper(): Mapper<ProductResponse, Product> {
+        return ProductMapper()
+    }
+
+    @Provides
+    fun provideCategoryRepo(apiService: ApiService, mapper: Mapper<ProductResponse, Product>): CategoriesRepoInterface {
+        return CategoriesRepoImpl(apiService, mapper as ProductMapper)
     }
     @Provides
     fun provideApiservice(retrofit: Retrofit):ApiService{

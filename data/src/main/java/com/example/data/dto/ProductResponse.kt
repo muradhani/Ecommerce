@@ -1,11 +1,11 @@
 package com.example.data.dto
 
 data class ProductResponse(
-    val category: String,
-    val description: String,
     val id: Int,
-    val image: String,
+    val title: String,
     val price: Double,
-    val rating: Rating,
-    val title: String
+    val description: String,
+    val category: String,
+    val image: String,
+    val rating: Rating
 )
