@@ -21,7 +21,7 @@ class MainCategoryViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _bestDealsLiveData = MutableLiveData<List<Product>>()
-    val bestDealsLiveData: LiveData<List<Product>> get() = _bestDealsLiveData
+    val bestDealsLiveData: LiveData<List<Product>> = _bestDealsLiveData
 
     private val _bestProductsLiveData = MutableLiveData<List<Product>>()
     val bestProductsLiveData: LiveData<List<Product>> get() = _bestProductsLiveData
@@ -38,14 +38,12 @@ class MainCategoryViewModel @Inject constructor(
                 withContext(Dispatchers.Main){
                     when (state) {
                         is State.Success -> {
-                            Log.i("repo1",state.data.toString())
                             val allProductsList = state.toData()!!.get(0)
                             val bestDeals = state.toData()!!.get(1)
                             val bestProducts = state.toData()!!.get(2)
                             _bestDealsLiveData.postValue(bestDeals)
                             _bestProductsLiveData.postValue(bestProducts)
                             _allProductsLiveData.postValue(allProductsList)
-                            Log.i("repo",bestDeals.toString())
                         }
 
                         is State.Loading -> {

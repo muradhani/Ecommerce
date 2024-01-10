@@ -12,9 +12,9 @@ abstract class BaseRecyclerViewAdapterAdapter< DB : ViewDataBinding,T>(initialDa
     private var data: List<T> = initialData
     var itemClickListener: OnItemClickListener<T>? = null
     abstract fun bind(binding: DB,item: T)
-    fun setData(newData: List<T>) {
+    fun setData(newData: List<*>) {
         val diffResult = DiffUtil.calculateDiff(BaseDiffCallback(data, newData))
-        data = newData
+        data = newData as List<T>
         diffResult.dispatchUpdatesTo(this)
     }
 

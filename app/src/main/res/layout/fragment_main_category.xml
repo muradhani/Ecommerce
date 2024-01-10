@@ -39,6 +39,7 @@
                 tools:listitem="@layout/special_rv_item"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 setAdapter="@{productsAdapter}"
+                submitList="@{viewModel.allProductsLiveData}"
                 />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -62,6 +63,7 @@
                 tools:listitem="@layout/best_deals_rv_item"
                 app:layout_constraintTop_toBottomOf="@+id/best_deals_tv"
                 setAdapter="@{BestDealsAdapter}"
+                submitList="@{viewModel.bestDealsLiveData}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -84,6 +86,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/best_products_tv"
                 setAdapter="@{BestProductsAdapter}"
+                submitList="@{viewModel.bestProductsLiveData}"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2"
 

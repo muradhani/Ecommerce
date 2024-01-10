@@ -24,8 +24,8 @@ fun <DB : ViewDataBinding> setAdapter(view: RecyclerView, adapter: RecyclerView.
     }
 }
 @BindingAdapter("submitList")
-fun  submitList(view: RecyclerView, list:List<Product>?){
-    val adapter = view.adapter as BestDealsRvAdapter
+fun < T, DB : ViewDataBinding>  submitList(view: RecyclerView, list:List<T>?){
+    val adapter = view.adapter as BaseRecyclerViewAdapterAdapter<DB,T>
     adapter.setData(list?: emptyList<Product>())
 
 }

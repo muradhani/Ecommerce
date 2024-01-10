@@ -31,6 +31,7 @@ class MainCategoryFragment : Fragment(), ProductsListnter, BestDealsProductListn
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMainCategoryBinding.inflate(inflater)
+        binding.viewModel = viewModel
         binding.lifecycleOwner = this
         category = arguments?.getString("category").toString()
         viewModel.getProducts(category)
@@ -40,7 +41,7 @@ class MainCategoryFragment : Fragment(), ProductsListnter, BestDealsProductListn
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapters()
-        observeLists()
+
     }
 
 
@@ -53,21 +54,4 @@ class MainCategoryFragment : Fragment(), ProductsListnter, BestDealsProductListn
     override fun onProductClicked(product: Product) {
 
     }
-    private fun observeLists() {
-        // Observe bestDealsLiveData and submit to bestDealsAdapter
-        viewModel.bestDealsLiveData.observe(viewLifecycleOwner) { bestDeals ->
-            binding.bestDealsAdapter?.setData(bestDeals)
-        }
-
-        // Observe bestProductsLiveData and submit to bestProductsAdapter
-        viewModel.bestProductsLiveData.observe(viewLifecycleOwner) { bestProducts ->
-            binding.bestProductsAdapter?.setData(bestProducts)
-        }
-
-        // Observe allProductsLiveData and submit to productsAdapter
-        viewModel.allProductsLiveData.observe(viewLifecycleOwner) { allProductsList ->
-            binding.productsAdapter?.setData(allProductsList)
-        }
-    }
-
 }
