@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.domain.entities.Product
+import com.example.domain.models.states.State
 import com.example.ecommerce.adapters.BestDealsProductListnter
 import com.example.ecommerce.adapters.BestDealsRvAdapter
 import com.example.ecommerce.adapters.ProductsListnter
@@ -38,18 +39,10 @@ class MainCategoryFragment : Fragment(), ProductsListnter, BestDealsProductListn
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (::category.isInitialized){
-            Log.i("main",category)
-            initAdapters()
-            observe()
-        }
+        initAdapters()
+        observeLists()
     }
 
-    private fun observe() {
-        viewModel.bestDealsLiveData.observe(viewLifecycleOwner, Observer {
-            Log.i("list",it.toString())
-        })
-    }
 
     private fun initAdapters() {
         binding.productsAdapter = ProductsRvAdapter(emptyList(), this)
@@ -59,6 +52,22 @@ class MainCategoryFragment : Fragment(), ProductsListnter, BestDealsProductListn
 
     override fun onProductClicked(product: Product) {
 
+    }
+    private fun observeLists() {
+        // Observe bestDealsLiveData and submit to bestDealsAdapter
+        viewModel.bestDealsLiveData.observe(viewLifecycleOwner) { bestDeals ->
+            binding.bestDealsAdapter?.setData(bestDeals)
+        }
+
+        // Observe bestProductsLiveData and submit to bestProductsAdapter
+        viewModel.bestProductsLiveData.observe(viewLifecycleOwner) { bestProducts ->
+            binding.bestProductsAdapter?.setData(bestProducts)
+        }
+
+        // Observe allProductsLiveData and submit to productsAdapter
+        viewModel.allProductsLiveData.observe(viewLifecycleOwner) { allProductsList ->
+            binding.productsAdapter?.setData(allProductsList)
+        }
     }
 
 }

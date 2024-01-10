@@ -1,5 +1,6 @@
 package com.example.ecommerce.di
 
+import com.example.data.dto.CategoryProductsItem
 import com.example.data.dto.ProductResponse
 import com.example.data.mapper.ProductMapper
 import com.example.data.remote.ApiService
@@ -22,6 +23,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -32,13 +34,14 @@ object DataModule {
         return UserRepoImpl(firebaseAuth)
     }
     @Provides
-    fun productMapper(): Mapper<ProductResponse, Product> {
+    fun productMapper(): Mapper<CategoryProductsItem, Product> {
         return ProductMapper()
     }
 
     @Provides
-    fun provideCategoryRepo(apiService: ApiService, mapper: Mapper<ProductResponse, Product>): CategoriesRepoInterface {
-        return CategoriesRepoImpl(apiService, mapper as ProductMapper)
+    @Singleton
+    fun provideCategoryRepo(apiService: ApiService,mapper:Mapper<CategoryProductsItem, Product>): CategoriesRepoInterface {
+        return CategoriesRepoImpl(apiService,mapper as ProductMapper)
     }
     @Provides
     fun provideApiservice(retrofit: Retrofit):ApiService{

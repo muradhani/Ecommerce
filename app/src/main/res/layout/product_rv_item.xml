@@ -13,7 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/g_card_background"
-        app:elevation="0dp">
+        app:elevation="0dp"
+        android:layout_margin="@dimen/_10ssp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -44,6 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_light"
+                    android:maxLines="2"
                     android:text="@{product.title}"
                     android:textColor="@color/black"
                     android:textSize="14sp"

@@ -1,6 +1,7 @@
 package com.example.data.remote
 
 import com.example.data.dto.AllCategoriesResponse
+import com.example.data.dto.CategoryProducts
 import com.example.data.dto.ProductResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -15,5 +16,5 @@ interface ApiService {
     suspend fun getCategories():Response<List<String>>
 
     @GET("products/category/{category}")
-    suspend fun getProductsInCategory(@Path("category") category: String):Response<List<ProductResponse>>
+    suspend fun getProductsInCategory(@Path("category") category: String):Response<CategoryProducts>
 }

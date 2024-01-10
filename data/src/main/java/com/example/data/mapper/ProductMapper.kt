@@ -1,12 +1,13 @@
 package com.example.data.mapper
 
+import com.example.data.dto.CategoryProductsItem
 import com.example.data.dto.ProductResponse
 import com.example.domain.entities.Product
 import com.example.domain.mapper.Mapper
 import javax.inject.Inject
 
-class ProductMapper @Inject constructor():Mapper<ProductResponse,Product> {
-    override fun map(input: ProductResponse): Product {
+class ProductMapper @Inject constructor():Mapper<CategoryProductsItem,Product> {
+    override fun map(input: CategoryProductsItem): Product {
         return Product(input.category,
             input.description,
             input.id,

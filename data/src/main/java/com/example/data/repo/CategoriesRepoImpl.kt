@@ -6,15 +6,17 @@ import com.example.data.remote.ApiService
 import com.example.domain.entities.Product
 import com.example.domain.models.states.State
 import com.example.domain.repo.CategoriesRepoInterface
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.channelFlow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import java.lang.Exception
 import javax.inject.Inject
 
 class CategoriesRepoImpl @Inject constructor(
     private val apiService: ApiService,
-    private val productMapper: ProductMapper
+    private val mapper: ProductMapper
 ) : CategoriesRepoInterface {
     override suspend fun getAllCategories(): Flow<State<List<String>>> {
         return flow{
@@ -35,19 +37,16 @@ class CategoriesRepoImpl @Inject constructor(
     override suspend fun getCategoryProducts(category: String): Flow<State<List<Product>>> {
         return flow {
             try {
-                emit(State.Loading)
                 val result = apiService.getProductsInCategory(category)
                 if (result.isSuccessful){
-                    Log.i("main",result.body().toString())
-                    emit(State.Success(result.body()!!.map {
-                        productMapper.map(it)
-                    }))
-                }else{
-                    emit(State.Error(result.message()))
+                    val products = result.body()!!.map {
+                        mapper.map(it)
+                    }
+                    emit(State.Success(products))
                 }
             } catch (e: Exception) {
                 Log.i("main",e.message.toString())
             }
-        }
+        }.flowOn(Dispatchers.IO)
     }
 }

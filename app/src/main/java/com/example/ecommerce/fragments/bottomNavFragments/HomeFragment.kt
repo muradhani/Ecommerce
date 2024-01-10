@@ -66,15 +66,11 @@ class HomeFragment : Fragment() {
         return HomeViewPagerAdapter(fragments, requireParentFragment().childFragmentManager, lifecycle)
     }
 
-    private suspend fun createFragments(categories:List<String>):List<Fragment> = coroutineScope {
-        categories.map { category ->
-            async{
-                MainCategoryFragment().apply {
-                    arguments = Bundle().apply {
-                        putString("category", category)
-                    }
-                }
-            }
-        }.awaitAll()
+    private suspend fun createFragments(categories:List<String>):List<Fragment> {
+      return listOf(MainCategoryFragment().apply {
+          arguments = Bundle().apply {
+              putString("category",categories[1])
+          }
+      })
     }
 }

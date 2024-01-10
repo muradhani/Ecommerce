@@ -1,5 +1,6 @@
 package com.example.ecommerce.viewModels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +10,9 @@ import com.example.domain.models.states.State
 import com.example.domain.useCases.GetAllCategoriesUseCase
 import com.example.domain.useCases.GetCategoryProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,21 +33,26 @@ class MainCategoryViewModel @Inject constructor(
     val filteredProducts: LiveData<State<List<List<Product>>>> get() = _filteredProducts
 
     fun getProducts(category:String){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             getCategoryProductsUseCase(category).collect{state ->
-                when (state) {
-                    is State.Success -> {
-                        val (bestDeals, bestProducts, allProductsList) = (state.toData() as? Triple<List<Product>, List<Product>, List<Product>>)
-                            ?: Triple(emptyList(), emptyList(), emptyList())
-                        _bestDealsLiveData.postValue(bestDeals)
-                        _bestProductsLiveData.postValue(bestProducts)
-                        _allProductsLiveData.postValue(allProductsList)
-                    }
+                withContext(Dispatchers.Main){
+                    when (state) {
+                        is State.Success -> {
+                            Log.i("repo1",state.data.toString())
+                            val allProductsList = state.toData()!!.get(0)
+                            val bestDeals = state.toData()!!.get(1)
+                            val bestProducts = state.toData()!!.get(2)
+                            _bestDealsLiveData.postValue(bestDeals)
+                            _bestProductsLiveData.postValue(bestProducts)
+                            _allProductsLiveData.postValue(allProductsList)
+                            Log.i("repo",bestDeals.toString())
+                        }
 
-                    is State.Loading -> {
-                        _filteredProducts.postValue(state)
+                        is State.Loading -> {
+                            _filteredProducts.postValue(state)
+                        }
+                        else -> {}
                     }
-                    else -> {}
                 }
             }
         }

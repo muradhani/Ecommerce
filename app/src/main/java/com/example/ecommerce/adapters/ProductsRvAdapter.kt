@@ -4,12 +4,13 @@ import com.example.domain.entities.Product
 import com.example.ecommerce.R
 import com.example.ecommerce.base.BaseRecyclerViewAdapterAdapter
 import com.example.ecommerce.databinding.BestDealsRvItemBinding
+import com.example.ecommerce.databinding.ProductRvItemBinding
 
 class ProductsRvAdapter(
     private val list : List<Product>,
     private val productListner: ProductsListnter
-): BaseRecyclerViewAdapterAdapter<BestDealsRvItemBinding, Product>(list) {
-    override fun bind(binding: BestDealsRvItemBinding, item: Product) {
+): BaseRecyclerViewAdapterAdapter<ProductRvItemBinding, Product>(list) {
+    override fun bind(binding: ProductRvItemBinding, item: Product) {
         binding.product = item
     }
 

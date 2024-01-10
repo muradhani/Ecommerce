@@ -7,6 +7,8 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.domain.entities.Product
+import com.example.ecommerce.adapters.BestDealsRvAdapter
 import com.example.ecommerce.base.BaseRecyclerViewAdapterAdapter
 import com.example.ecommerce.base.BaseViewHolder
 
@@ -22,7 +24,8 @@ fun <DB : ViewDataBinding> setAdapter(view: RecyclerView, adapter: RecyclerView.
     }
 }
 @BindingAdapter("submitList")
-fun <T,DB:ViewDataBinding> submitList(view: RecyclerView,list:List<T>?){
-    val adapter = view.adapter as BaseRecyclerViewAdapterAdapter<DB,T>
-    adapter.setData(list?: emptyList())
+fun  submitList(view: RecyclerView, list:List<Product>?){
+    val adapter = view.adapter as BestDealsRvAdapter
+    adapter.setData(list?: emptyList<Product>())
+
 }
