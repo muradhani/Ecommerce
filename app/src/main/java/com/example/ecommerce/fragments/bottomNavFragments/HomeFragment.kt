@@ -67,13 +67,10 @@ class HomeFragment : Fragment() {
     }
 
     private suspend fun createFragments(categories:List<String>):List<Fragment> {
-      return categories.map { category->
-          MainCategoryFragment().apply {
-              arguments = Bundle().apply {
-                  putString("category",category)
-              }
+      return listOf(MainCategoryFragment().apply {
+          arguments = Bundle().apply {
+              putString("category",categories[1])
           }
-      }
-
+      })
     }
 }
