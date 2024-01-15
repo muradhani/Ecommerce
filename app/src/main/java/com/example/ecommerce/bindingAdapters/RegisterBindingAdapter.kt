@@ -4,6 +4,10 @@ import android.provider.CalendarContract.Colors
 import android.view.View
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.fragment.app.FragmentContainerView
+import androidx.lifecycle.LiveData
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.domain.models.states.CheckEmailExistenceState
 import com.example.domain.models.states.State
 import com.example.domain.models.states.UserLoginState
@@ -11,7 +15,18 @@ import com.example.domain.models.states.ValidateEmailState
 import com.example.domain.models.states.ValidatePasswordState
 import com.example.ecommerce.R
 import com.google.android.material.snackbar.Snackbar
+@BindingAdapter(value = ["observeLogin"])
+fun observeLogin(view: FragmentContainerView, login:Boolean){
+    val navController = view.findNavController()
 
+    if (login){
+        navController.setGraph(R.navigation.main_nav_graph)
+    }
+    else{
+        navController.setGraph(R.navigation.main_nav_graph)
+        //navController.setGraph(R.navigation.intro_app_nav)
+    }
+}
 @BindingAdapter(value = ["showingLoading"])
 fun <T> showingLoading(view : View, state: State<T>?){
     when (state) {

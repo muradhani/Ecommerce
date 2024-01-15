@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_loginRegisterFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_loginRegisterFragment_to_mainShoppingFragment"
+            app:destination="@id/mainShoppingFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileSettingsFragment"
@@ -50,4 +53,9 @@
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/mainShoppingFragment"
+        android:name="com.example.ecommerce.fragments.mainFragments.MainShoppingFragment"
+        android:label="MainShoppingFragment"
+        tools:layout="@layout/fragment_main_shopping"/>
 </navigation>
