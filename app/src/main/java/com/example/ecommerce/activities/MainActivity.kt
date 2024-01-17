@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         binding.viewModel = viewModel
+        binding.lifecycleOwner = this
         lifecycleScope.launch {
             viewModel.getLoginState()
         }

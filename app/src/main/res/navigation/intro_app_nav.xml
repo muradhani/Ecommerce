@@ -24,8 +24,8 @@
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
         <action
-            android:id="@+id/action_loginFragment_to_mainShoppingFragment"
-            app:destination="@id/mainShoppingFragment" />
+            android:id="@+id/action_loginFragment_to_shopping_navigation"
+            app:destination="@id/shopping_navigation" />
     </fragment>
     <fragment
         android:id="@+id/loginRegisterFragment"
@@ -53,9 +53,5 @@
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/mainShoppingFragment"
-        android:name="com.example.ecommerce.fragments.mainFragments.MainShoppingFragment"
-        android:label="MainShoppingFragment"
-        tools:layout="@layout/fragment_main_shopping"/>
+    <include app:graph="@navigation/shopping_navigation" />
 </navigation>

@@ -20,14 +20,16 @@ import com.google.android.material.snackbar.Snackbar
 import kotlin.math.log
 
 @BindingAdapter(value = ["observeLogin"])
-fun observeLogin(view: FragmentContainerView, login:UserLoginState?){
+fun observeLogin(view: FragmentContainerView, login:Boolean?){
     val navController = view.findNavController()
     Log.i("main login",login.toString())
-    if (login is UserLoginState.LoginSuccess){
+    if (login != null &&login){
         navController.setGraph(R.navigation.shopping_navigation)
     }
-    else{
+    else if (login == false){
         navController.setGraph(R.navigation.intro_app_nav)
+    }else{
+
     }
 }
 @BindingAdapter(value = ["showingLoading"])

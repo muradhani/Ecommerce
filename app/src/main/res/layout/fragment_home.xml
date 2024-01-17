@@ -12,7 +12,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.bottomNavFragments.HomeFragment">
+        tools:context=".fragments.bottomNavFragments.HomeFragment"
+        android:background="@color/white">
 
         <LinearLayout
             android:id="@+id/header"
@@ -58,7 +59,8 @@
             android:layout_marginTop="@dimen/_16sdp"
             app:layout_constraintTop_toBottomOf="@+id/header"
             app:tabTextAppearance="@style/tabLayout_text"
-            app:tabMode="scrollable"/>
+            app:tabMode="scrollable"
+            android:background="@color/white"/>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager"
