@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.domain.models.states.UserLoginState
 import com.example.ecommerce.R
 import com.example.ecommerce.activities.ShoppoingActivity
@@ -18,7 +21,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
-
     private  val viewModel: LoginViewModel by viewModels()
     lateinit var binding :FragmentLoginBinding
     override fun onCreateView(
@@ -33,17 +35,14 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loginObserve()
+       loginObserve()
     }
 
     private fun loginObserve() {
         viewModel.login.observe(viewLifecycleOwner, Observer { loginState ->
             if (loginState is UserLoginState.LoginSuccess){
-                val activity = requireActivity()
-                val intent = Intent(activity, ShoppoingActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                activity.startActivity(intent)
-                activity.finish()
+                findNavController().navigate(R.id.action_loginFragment_to_mainShoppingFragment)
+                Toast.makeText(requireActivity(),"success",Toast.LENGTH_SHORT).show()
             }
         })
     }

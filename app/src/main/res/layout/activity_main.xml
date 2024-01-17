@@ -7,6 +7,9 @@
         <variable
             name="viewModel"
             type="com.example.ecommerce.viewModels.MainActivityViewModel" />
+        <variable
+            name="loginviewModel"
+            type="com.example.ecommerce.viewModels.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +26,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            observeLogin="@{viewModel.login}"/>
+            observeLogin="@{loginviewModel.login}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

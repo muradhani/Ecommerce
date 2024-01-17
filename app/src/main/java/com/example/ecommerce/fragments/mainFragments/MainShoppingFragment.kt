@@ -24,7 +24,6 @@ class MainShoppingFragment : Fragment() {
         val navHostFragment =
             childFragmentManager.findFragmentById(com.example.ecommerce.R.id.nav_host_fragment2) as NavHostFragment?
         val navController = navHostFragment!!.navController
-
         binding.bottomNav.setupWithNavController(navController)
         return binding.root
     }

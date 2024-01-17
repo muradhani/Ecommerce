@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.ecommerce.R
 import com.example.ecommerce.databinding.ActivityMainBinding
+import com.example.ecommerce.viewModels.LoginViewModel
 import com.example.ecommerce.viewModels.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -19,6 +20,8 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val viewModel :MainActivityViewModel by viewModels()
+    private val loginViewModel : LoginViewModel by viewModels()
+
     lateinit var binding :ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
