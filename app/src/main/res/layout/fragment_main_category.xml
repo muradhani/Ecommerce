@@ -36,7 +36,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:listitem="@layout/special_rv_item"
+                tools:listitem="@layout/product_rv_item"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 setAdapter="@{productsAdapter}"
                 submitList="@{viewModel.allProductsLiveData}"
@@ -89,8 +89,8 @@
                 submitList="@{viewModel.bestProductsLiveData}"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2"
-
-                tools:listitem="@layout/product_rv_item"/>
+                tools:listitem="@layout/special_rv_item"
+               />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
