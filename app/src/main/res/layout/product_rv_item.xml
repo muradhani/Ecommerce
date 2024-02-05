@@ -6,7 +6,7 @@
     <data>
         <variable
             name="product"
-            type="com.example.domain.entities.Product" />
+            type="com.example.domain.models.Product" />
     </data>
 
     <LinearLayout
@@ -24,7 +24,7 @@
                 android:id="@+id/img_product"
                 android:layout_width="114dp"
                 android:layout_height="108dp"
-                setImage="@{product.image}"
+                setImage="@{product.thumbnail}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -72,7 +72,7 @@
                 android:layout_marginBottom="15dp"
                 android:fontFamily="@font/sf_pro_display"
                 tools:text="3.4"
-                android:text="@{product.rating}"
+                android:text="@{String.valueOf(product.rating)}"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -96,7 +96,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="15dp"
                 android:fontFamily="@font/sf_pro_display"
-                android:text="@{String.valueOf(product.price)}"
+                android:text="@{String.valueOf(product.newprice)}"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"

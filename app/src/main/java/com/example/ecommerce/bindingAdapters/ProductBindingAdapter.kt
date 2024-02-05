@@ -7,7 +7,7 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.domain.entities.Product
+import com.example.domain.models.Product
 import com.example.ecommerce.adapters.BestDealsRvAdapter
 import com.example.ecommerce.base.BaseRecyclerViewAdapterAdapter
 import com.example.ecommerce.base.BaseViewHolder

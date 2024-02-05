@@ -1,6 +1,7 @@
 package com.example.ecommerce.adapters
 
-import com.example.domain.entities.Product
+
+import com.example.domain.models.Product
 import com.example.ecommerce.R
 import com.example.ecommerce.base.BaseRecyclerViewAdapterAdapter
 import com.example.ecommerce.databinding.BestDealsRvItemBinding

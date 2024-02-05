@@ -1,14 +1,12 @@
 package com.example.data.repo
 
 import android.util.Log
-import com.example.data.mapper.ProductMapper
 import com.example.data.remote.ApiService
-import com.example.domain.entities.Product
+import com.example.domain.entities.ProductEntity
 import com.example.domain.models.states.State
 import com.example.domain.repo.CategoriesRepoInterface
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.channelFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import java.lang.Exception
@@ -16,7 +14,7 @@ import javax.inject.Inject
 
 class CategoriesRepoImpl @Inject constructor(
     private val apiService: ApiService,
-    private val mapper: ProductMapper
+    //private val mapper: ProductMapper
 ) : CategoriesRepoInterface {
     override suspend fun getAllCategories(): Flow<State<List<String>>> {
         return flow{
@@ -34,15 +32,13 @@ class CategoriesRepoImpl @Inject constructor(
         }
     }
 
-    override suspend fun getCategoryProducts(category: String): Flow<State<List<Product>>> {
+    override suspend fun getCategoryProducts(category: String): Flow<State<List<ProductEntity>>> {
         return flow {
             try {
                 val result = apiService.getProductsInCategory(category)
                 if (result.isSuccessful){
-                    val products = result.body()!!.map {
-                        mapper.map(it)
-                    }
-                    emit(State.Success(products))
+                    val products = result.body()!!.products
+                   emit(State.Success(products))
                 }
             } catch (e: Exception) {
                 Log.i("main",e.message.toString())

@@ -10,7 +10,7 @@
             type="com.example.ecommerce.fragments.categorise.ProductDetailesViewModel" />
         <variable
             name="product"
-            type="com.example.domain.entities.Product" />
+            type="com.example.domain.models.Product" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@{'$'+String.valueOf(product.price)}"
+                android:text="@{'$'+String.valueOf(product.newprice)}"
                 android:textColor="@color/g_gray700"
                 tools:text="$3000" />
         </LinearLayout>
@@ -140,7 +140,7 @@
             style="@style/blueButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="@{()-> viewModel.login()}"
+
             android:text="Login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

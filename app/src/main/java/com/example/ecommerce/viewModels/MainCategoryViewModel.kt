@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.domain.entities.Product
+import com.example.domain.models.Product
 import com.example.domain.models.states.State
 import com.example.domain.useCases.GetAllCategoriesUseCase
 import com.example.domain.useCases.GetCategoryProductsUseCase
