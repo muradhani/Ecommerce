@@ -27,7 +27,8 @@
                 setImage="@{product.thumbnail}"
                 android:layout_width="@dimen/_90sdp"
                 android:layout_height="@dimen/_60sdp"
-                android:layout_marginStart="16dp"
+                android:layout_margin="@dimen/_7sdp"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -69,6 +70,7 @@
                 android:id="@+id/tv_old_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:strikeThrough="@{true}"
                 android:text="@{String.valueOf(product.oldprice)+'$'}"
                 app:layout_constraintStart_toStartOf="@id/tv_deal_product_name"
                 app:layout_constraintTop_toBottomOf="@id/tv_deal_product_name"

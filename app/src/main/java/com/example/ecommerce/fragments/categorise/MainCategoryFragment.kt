@@ -1,15 +1,17 @@
 package com.example.ecommerce.fragments.categorise
 
+import android.R
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.StrikethroughSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.example.domain.models.Product
-import com.example.domain.models.states.State
 import com.example.ecommerce.adapters.BestDealsProductListnter
 import com.example.ecommerce.adapters.BestDealsRvAdapter
 import com.example.ecommerce.adapters.ProductsListnter
@@ -19,6 +21,7 @@ import com.example.ecommerce.adapters.SpecialRvAdapter
 import com.example.ecommerce.databinding.FragmentMainCategoryBinding
 import com.example.ecommerce.viewModels.MainCategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainCategoryFragment : Fragment(), ProductsListnter, BestDealsProductListnter,
