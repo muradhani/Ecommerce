@@ -22,8 +22,8 @@ class GetCategoryProductsUseCase @Inject constructor(
                 categoriesRepoInterface.getCategoryProducts(category).collect {
                     emit(State.Loading)
                     val list = it.toData()!!.map { mapper.map(it) }
-                    val bestDeals = list.sortedBy { it.newprice }.take(2)
-                    val bestProducts = list.sortedByDescending { it.rating }.take(3)
+                    val bestDeals = list.sortedBy { it.newprice }.take(5)
+                    val bestProducts = list.sortedByDescending { it.rating }.take(4)
                     emit(State.Success(listOf(list, bestDeals, bestProducts)))
                 }
             } catch (e: Exception) {
