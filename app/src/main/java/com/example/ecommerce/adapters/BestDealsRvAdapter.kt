@@ -13,7 +13,10 @@ class BestDealsRvAdapter(
     override fun bind(binding: BestDealsRvItemBinding, item: Product) {
        binding.product = item
         binding.btnSeeProduct.setOnClickListener {
-
+            productListnter.onProductClicked(item)
+        }
+        binding.root.setOnClickListener{
+            productListnter.onProductClicked(item)
         }
     }
 

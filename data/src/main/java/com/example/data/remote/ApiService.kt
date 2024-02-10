@@ -1,6 +1,7 @@
 package com.example.data.remote
 
 import com.example.data.dto.newApiDto.CategoryProductsResponse
+import com.example.domain.entities.ProductEntity
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -15,4 +16,7 @@ interface ApiService {
 
     @GET("products/category/{category}")
     suspend fun getProductsInCategory(@Path("category") category: String):Response<CategoryProductsResponse>
+
+    @GET("products/{ProductId}")
+    suspend fun getProductData(@Path("ProductId") productId: String):Response<ProductEntity>
 }

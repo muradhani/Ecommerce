@@ -2,12 +2,14 @@ package com.example.ecommerce.di
 
 import com.example.data.remote.ApiService
 import com.example.data.repo.CategoriesRepoImpl
+import com.example.data.repo.ProductRepoImpl
 import com.example.data.repo.UserRepoImpl
 import com.example.domain.entities.ProductEntity
 import com.example.domain.mapper.Mapper
 import com.example.domain.mapper.ProductMapper
 import com.example.domain.models.Product
 import com.example.domain.repo.CategoriesRepoInterface
+import com.example.domain.repo.ProductRepoInterface
 import com.example.domain.repo.UserRepoInterface
 import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
@@ -28,6 +30,8 @@ object DataModule {
     fun provideUserRepo(firebaseAuth: FirebaseAuth): UserRepoInterface {
         return UserRepoImpl(firebaseAuth)
     }
+
+
     @Provides
     fun productMapper(): Mapper<ProductEntity, Product> {
         return ProductMapper()
@@ -37,6 +41,12 @@ object DataModule {
     @Singleton
     fun provideCategoryRepo(apiService: ApiService): CategoriesRepoInterface {
         return CategoriesRepoImpl(apiService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideProductRepo(apiService: ApiService): ProductRepoInterface {
+        return ProductRepoImpl(apiService)
     }
     @Provides
     fun provideApiservice(retrofit: Retrofit):ApiService{

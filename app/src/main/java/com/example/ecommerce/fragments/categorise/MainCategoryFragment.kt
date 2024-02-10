@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.domain.models.Product
 import com.example.ecommerce.adapters.BestDealsProductListnter
 import com.example.ecommerce.adapters.BestDealsRvAdapter
@@ -19,6 +20,7 @@ import com.example.ecommerce.adapters.ProductsRvAdapter
 import com.example.ecommerce.adapters.SpecialProductsListnter
 import com.example.ecommerce.adapters.SpecialRvAdapter
 import com.example.ecommerce.databinding.FragmentMainCategoryBinding
+import com.example.ecommerce.fragments.bottomNavFragments.HomeFragmentDirections
 import com.example.ecommerce.viewModels.MainCategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -44,8 +46,8 @@ class MainCategoryFragment : Fragment(), ProductsListnter, BestDealsProductListn
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapters()
-
     }
+
 
 
     private fun initAdapters() {
@@ -55,6 +57,9 @@ class MainCategoryFragment : Fragment(), ProductsListnter, BestDealsProductListn
     }
 
     override fun onProductClicked(product: Product) {
-
+        var id = product.id.toString()
+        val action =  HomeFragmentDirections.actionHomeFragmentToProductDetailesFragment(id)
+        findNavController().navigate(action)
     }
+
 }
