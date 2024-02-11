@@ -16,6 +16,7 @@ import com.example.domain.models.states.UserLoginState
 import com.example.domain.models.states.ValidateEmailState
 import com.example.domain.models.states.ValidatePasswordState
 import com.example.ecommerce.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlin.math.log
 
@@ -24,10 +25,21 @@ fun observeLogin(view: FragmentContainerView, login:Boolean?){
     val navController = view.findNavController()
     Log.i("main login",login.toString())
     if (login != null &&login){
-        navController.setGraph(R.navigation.shopping_navigation)
+        navController.setGraph(R.navigation.main_nav_graph)
     }
     else if (login == false){
         navController.setGraph(R.navigation.intro_app_nav)
+    }else{
+
+    }
+}
+@BindingAdapter(value = ["hideOrShow"])
+fun hideOrShow(view: BottomNavigationView, login:Boolean?){
+    if (login != null &&login){
+        view.visibility = View.VISIBLE
+    }
+    else if (login == false){
+        view.visibility = View.GONE
     }else{
 
     }

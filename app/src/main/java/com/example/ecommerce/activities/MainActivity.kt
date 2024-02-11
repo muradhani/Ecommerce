@@ -33,4 +33,9 @@ class MainActivity : AppCompatActivity() {
             viewModel.getLoginState()
         }
     }
+
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        findNavController(R.id.nav_host_fragment2).popBackStack()
+//    }
 }
