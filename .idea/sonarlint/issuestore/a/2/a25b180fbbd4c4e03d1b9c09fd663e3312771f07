@@ -1,0 +1,4 @@
+
+dkotlin:S6309	"@Functions returning "Flow" or "Channel" should not be suspending(Β›Γλύÿÿÿÿ8υχ•ΘΨ1
+>kotlin:S1128"Remove this unused import.(›ό„®ϋÿÿÿÿ8¬Χ©Ω1
+akotlin:S6517"BMake this interface functional or replace it with a function type.(¨¦Ό£8κΡ•ΘΨ1

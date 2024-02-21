@@ -1,0 +1,16 @@
+
+Xkotlin:S6615~";Remove this variable, which is assigned but never accessed.(©«·™øÿÿÿÿ
+?kotlin:S6615€"&The value assigned here is never used.(Íýú‡
+?kotlin:S6615„"&The value assigned here is never used.(°æÏô
+Ekotlin:S108R")Either remove or fill this block of code.(¥ßé¡þÿÿÿÿ
+Ekotlin:S108U")Either remove or fill this block of code.(€¸¦’üÿÿÿÿ
+@kotlin:S108d")Either remove or fill this block of code.(óì–À
+Ekotlin:S108g")Either remove or fill this block of code.(€¸¦’üÿÿÿÿ
+@kotlin:S108r")Either remove or fill this block of code.(Ýêï¯
+Ekotlin:S108u")Either remove or fill this block of code.(€¸¦’üÿÿÿÿ
+@kotlin:S108 ")Either remove or fill this block of code.(å¥ž‡
+Gkotlin:S108+")Either remove or fill this block of code.(å¥ž‡8­ÎÇÏÙ1
+2kotlin:S1128"Remove this unused import.(™Ü¢ó
+7kotlin:S1128	"Remove this unused import.(œ‘Ü„úÿÿÿÿ
+7kotlin:S1128"Remove this unused import.(ÀÈ•÷ùÿÿÿÿ
+7kotlin:S1128"Remove this unused import.(Æ£ÿ±ùÿÿÿÿ

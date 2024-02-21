@@ -12,6 +12,10 @@ class SpecialRvAdapter(
 ): BaseRecyclerViewAdapterAdapter<SpecialRvItemBinding, Product>(list) {
     override fun bind(binding: SpecialRvItemBinding, item: Product) {
         binding.product = item
+        binding.root.setOnClickListener {
+            productListnter.onProductClicked(item)
+        }
+
     }
 
     override fun getLayoutId(): Int {

@@ -12,6 +12,9 @@ class ProductsRvAdapter(
 ): BaseRecyclerViewAdapterAdapter<ProductRvItemBinding, Product>(list) {
     override fun bind(binding: ProductRvItemBinding, item: Product) {
         binding.product = item
+        binding.root.setOnClickListener {
+            productListner.onProductClicked(item)
+        }
     }
 
     override fun getLayoutId(): Int {
