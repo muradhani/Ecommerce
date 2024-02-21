@@ -1,18 +1,16 @@
 package com.example.ecommerce.fragments.categorise
 
-import android.R
+
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.style.StrikethroughSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.domain.models.Product
+import com.example.ecommerce.R
 import com.example.ecommerce.adapters.BestDealsProductListnter
 import com.example.ecommerce.adapters.BestDealsRvAdapter
 import com.example.ecommerce.adapters.ProductsListnter
@@ -20,7 +18,7 @@ import com.example.ecommerce.adapters.ProductsRvAdapter
 import com.example.ecommerce.adapters.SpecialProductsListnter
 import com.example.ecommerce.adapters.SpecialRvAdapter
 import com.example.ecommerce.databinding.FragmentMainCategoryBinding
-import com.example.ecommerce.fragments.bottomNavFragments.HomeFragmentDirections
+import com.example.ecommerce.utils.NavigationListener
 import com.example.ecommerce.viewModels.MainCategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,6 +29,7 @@ class MainCategoryFragment : Fragment(), ProductsListnter, BestDealsProductListn
     private val viewModel: MainCategoryViewModel by viewModels()
     private lateinit var binding: FragmentMainCategoryBinding
     private lateinit var category : String
+    lateinit var listener: NavigationListener
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -57,9 +56,8 @@ class MainCategoryFragment : Fragment(), ProductsListnter, BestDealsProductListn
     }
 
     override fun onProductClicked(product: Product) {
-        var id = product.id.toString()
-        val action =  HomeFragmentDirections.actionHomeFragmentToProductDetailesFragment(id)
-        findNavController().navigate(action)
+
+        listener.onProductSelected(productId = product.id.toString())
     }
 
 }

@@ -38,7 +38,7 @@ class LoginFragment : Fragment() {
     private fun loginObserve() {
         viewModel.login.observe(viewLifecycleOwner, Observer { loginState ->
             if (loginState is UserLoginState.LoginSuccess){
-                findNavController().navigate(R.id.action_loginFragment_to_shopping_navigation)
+               // findNavController().navigate(R.id.action_loginFragment_to_shopping_navigation)
                 Toast.makeText(requireActivity(),"success",Toast.LENGTH_SHORT).show()
             }
         })

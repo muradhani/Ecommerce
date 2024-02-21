@@ -2,6 +2,7 @@ package com.example.ecommerce.fragments.categorise
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,7 +25,6 @@ class ProductDetailesFragment : Fragment() {
 
     private val viewModel: ProductDetailesViewModel by viewModels()
     private lateinit var binding :FragmentProductDetailesBinding
-    private val args  by navArgs<ProductDetailesFragmentArgs>()
     private var productId :String? = null
     private lateinit var viewPagerAdapter: ViewPagerImagerAdapter
     override fun onCreateView(
@@ -34,7 +34,9 @@ class ProductDetailesFragment : Fragment() {
         binding = FragmentProductDetailesBinding.inflate(inflater)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-        productId = args.productId
+        //productId = args.productId
+        productId= requireArguments().getString("productId")
+        Log.i("argument",productId.toString())
         viewModel.getProductData(productId!!)
         return binding.root
     }
@@ -50,12 +52,12 @@ class ProductDetailesFragment : Fragment() {
                 }
             }
         }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                findNavController().popBackStack() // to clear previous navigation history
-
-            }
-        })
+//        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+//            override fun handleOnBackPressed() {
+//                findNavController().popBackStack() // to clear previous navigation history
+//
+//            }
+//        })
 
     }
 

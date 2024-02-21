@@ -18,11 +18,7 @@
         android:id="@+id/searchFragment"
         android:name="com.example.ecommerce.fragments.bottomNavFragments.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
-        <action
-            android:id="@+id/action_searchFragment_to_productDetailesFragment"
-            app:destination="@id/productDetailesFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.example.ecommerce.fragments.bottomNavFragments.CartFragment"
@@ -37,11 +33,7 @@
         android:id="@+id/productDetailesFragment"
         android:name="com.example.ecommerce.fragments.categorise.ProductDetailesFragment"
         android:label="ProductDetailesFragment"
-        tools:layout="@layout/fragment_product_detailes">
-        <argument
-            android:name="ProductId"
-            app:argType="string" />
-    </fragment>
+        tools:layout="@layout/fragment_product_detailes"/>
     <fragment
         android:id="@+id/mainCategoryFragment"
         android:name="com.example.ecommerce.fragments.categorise.MainCategoryFragment"
