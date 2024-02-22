@@ -94,7 +94,7 @@
             style="@style/blueButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-
+            android:onClick="@{()-> viewModel.addToCart()}"
             android:text="Add to cart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

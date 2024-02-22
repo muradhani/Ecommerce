@@ -1,13 +1,21 @@
 package com.example.ecommerce.di
 
+import android.content.Context
+import androidx.room.Room
+import com.example.data.local.Dao.CartDao
+import com.example.data.local.database.AppDatabase
 import com.example.data.remote.ApiService
+import com.example.data.repo.CartRepoImpl
 import com.example.data.repo.CategoriesRepoImpl
 import com.example.data.repo.ProductRepoImpl
 import com.example.data.repo.UserRepoImpl
+import com.example.domain.entities.ProductCartEntitity
 import com.example.domain.entities.ProductEntity
 import com.example.domain.mapper.Mapper
 import com.example.domain.mapper.ProductMapper
+import com.example.domain.mapper.ProductToProductCart
 import com.example.domain.models.Product
+import com.example.domain.repo.CartRepoInterface
 import com.example.domain.repo.CategoriesRepoInterface
 import com.example.domain.repo.ProductRepoInterface
 import com.example.domain.repo.UserRepoInterface
@@ -15,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -25,7 +34,25 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DataModule {
+    @Provides
+    fun provideProductToCartProductMapper():ProductToProductCart{
+        return ProductToProductCart()
+    }
+    @Provides
+    fun provideCartRepoImpl(dao: CartDao):CartRepoInterface{
+        return CartRepoImpl(dao)
+    }
+    @Provides
+    @Singleton
+    fun provideAppDatabase(@ApplicationContext context: Context):AppDatabase{
+        return Room.databaseBuilder(context,AppDatabase::class.java,"appdatabase").build()
+    }
 
+    @Provides
+    @Singleton
+    fun provideCartTableDao(appDatabase: AppDatabase):CartDao{
+        return appDatabase.cartDao()
+    }
     @Provides
     fun provideUserRepo(firebaseAuth: FirebaseAuth): UserRepoInterface {
         return UserRepoImpl(firebaseAuth)
