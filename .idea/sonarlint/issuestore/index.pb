@@ -235,3 +235,13 @@ v
 Fdomain/src/main/java/com/example/domain/mapper/ProductToProductCart.kt,7\c\7c0f9c8fb385ce87997897abeda39e4c0d013ca2
 X
 (gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
+q
+Aapp/src/main/java/com/example/ecommerce/adapters/CartRvAdapter.kt,b\8\b87f634003b424719107e6d2cdf2d5e132d6cc2a
+z
+Jdomain/src/main/java/com/example/domain/useCases/GetAllcartItemsUseCase.kt,c\7\c769faaff7c664274005122ed29f6238a7872dc0
+„
+Tapp/src/main/java/com/example/ecommerce/fragments/bottomNavFragments/CartFragment.kt,6\f\6f41d54903cd7ca81609458621adff96d70f1a2d
+{
+Kapp/src/main/java/com/example/ecommerce/viewModels/CartFragmentViewModel.kt,9\4\945e7462825035c588921002c528b625bc3f3804
+‡
+Wapp/src/main/java/com/example/ecommerce/fragments/bottomNavFragments/ProfileFragment.kt,1\2\12a70ba157bd8750d8fb79f6cb236ee04e0640d0

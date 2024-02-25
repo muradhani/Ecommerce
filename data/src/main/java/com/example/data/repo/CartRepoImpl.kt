@@ -23,7 +23,10 @@ class CartRepoImpl @Inject constructor(
         }
     }
 
-    override suspend fun getAllCartItem(): List<ProductCartEntitity> {
-        TODO("Not yet implemented")
+    override suspend fun getAllCartItem(): Flow<State<List<ProductCartEntitity>>> {
+        return flow {
+            emit(State.Loading)
+            emit(State.Success(cartDao.getAllUserCartProducts()))
+        }
     }
 }

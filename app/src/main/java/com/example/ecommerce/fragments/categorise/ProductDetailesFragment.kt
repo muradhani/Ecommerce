@@ -27,6 +27,7 @@ class ProductDetailesFragment : Fragment() {
     private lateinit var binding :FragmentProductDetailesBinding
     private var productId :String? = null
     private lateinit var viewPagerAdapter: ViewPagerImagerAdapter
+    private val args:ProductDetailesFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,9 +35,7 @@ class ProductDetailesFragment : Fragment() {
         binding = FragmentProductDetailesBinding.inflate(inflater)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-        //productId = args.productId
-        productId= requireArguments().getString("productId")
-        Log.i("argument",productId.toString())
+        productId = args.productId
         viewModel.getProductData(productId!!)
         return binding.root
     }

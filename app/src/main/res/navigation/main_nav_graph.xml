@@ -23,7 +23,11 @@
         android:id="@+id/cartFragment"
         android:name="com.example.ecommerce.fragments.bottomNavFragments.CartFragment"
         android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_productDetailesFragment"
+            app:destination="@id/productDetailesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.ecommerce.fragments.bottomNavFragments.ProfileFragment"
@@ -33,7 +37,11 @@
         android:id="@+id/productDetailesFragment"
         android:name="com.example.ecommerce.fragments.categorise.ProductDetailesFragment"
         android:label="ProductDetailesFragment"
-        tools:layout="@layout/fragment_product_detailes"/>
+        tools:layout="@layout/fragment_product_detailes">
+        <argument
+            android:name="ProductId"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/mainCategoryFragment"
         android:name="com.example.ecommerce.fragments.categorise.MainCategoryFragment"

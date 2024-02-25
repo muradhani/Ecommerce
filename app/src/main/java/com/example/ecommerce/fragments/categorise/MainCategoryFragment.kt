@@ -30,6 +30,7 @@ class MainCategoryFragment : Fragment(), ProductsListnter, BestDealsProductListn
     private lateinit var binding: FragmentMainCategoryBinding
     private lateinit var category : String
     lateinit var listener: NavigationListener
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

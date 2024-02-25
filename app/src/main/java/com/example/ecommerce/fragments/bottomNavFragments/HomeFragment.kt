@@ -82,8 +82,10 @@ class HomeFragment : Fragment(),NavigationListener{
     }
 
     override fun onProductSelected(productId: String) {
-        val bundle = Bundle()
-        bundle.putString("productId",productId)
-        findNavController().navigate(R.id.action_homeFragment_to_productDetailesFragment, bundle)
+//        val bundle = Bundle()
+//        bundle.putString("productId",productId)
+//        findNavController().navigate(R.id.action_homeFragment_to_productDetailesFragment, bundle)
+        var action = HomeFragmentDirections.actionHomeFragmentToProductDetailesFragment(productId)
+        findNavController().navigate(action)
     }
 }
