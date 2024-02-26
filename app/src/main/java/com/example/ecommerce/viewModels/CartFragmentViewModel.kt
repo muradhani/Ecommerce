@@ -18,10 +18,13 @@ class CartFragmentViewModel @Inject constructor(
     private val _cartItems = MutableStateFlow<State<List<ProductCartEntitity>>>(State.Loading)
     val cartItems :StateFlow<State<List<ProductCartEntitity>>> = _cartItems
    init {
-       viewModelScope.launch {
-           getCartItem().collect{
-               _cartItems.value = it
-           }
-       }
+       fetchCartItems()
    }
+    fun fetchCartItems(){
+        viewModelScope.launch {
+            getCartItem().collect{
+                _cartItems.value = it
+            }
+        }
+    }
 }

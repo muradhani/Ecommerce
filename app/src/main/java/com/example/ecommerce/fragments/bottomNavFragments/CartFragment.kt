@@ -46,4 +46,8 @@ class CartFragment : Fragment(), ProductsCartListnter {
         findNavController().navigate(action)
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.fetchCartItems()
+    }
 }

@@ -7,7 +7,7 @@ import com.example.ecommerce.base.BaseRecyclerViewAdapterAdapter
 import com.example.ecommerce.databinding.CartProductItemBinding
 
 class CartRvAdapter(
-    private val list :List<ProductCartEntitity>,
+    private var list :List<ProductCartEntitity>,
     private val productsListnter: ProductsCartListnter
 ):BaseRecyclerViewAdapterAdapter<CartProductItemBinding,ProductCartEntitity>(list) {
     override fun bind(binding: CartProductItemBinding, item: ProductCartEntitity) {

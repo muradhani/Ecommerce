@@ -245,3 +245,7 @@ Tapp/src/main/java/com/example/ecommerce/fragments/bottomNavFragments/CartFragme
 Kapp/src/main/java/com/example/ecommerce/viewModels/CartFragmentViewModel.kt,9\4\945e7462825035c588921002c528b625bc3f3804
 ‡
 Wapp/src/main/java/com/example/ecommerce/fragments/bottomNavFragments/ProfileFragment.kt,1\2\12a70ba157bd8750d8fb79f6cb236ee04e0640d0
+y
+Iapp/src/main/java/com/example/ecommerce/utils/HideShowBottomNavigation.kt,2\3\236218b3bd2eae01df61c32a1cd16a973bc527d5
+m
+=domain/src/main/java/com/example/domain/entities/CartItems.kt,3\0\3081ff2217c359444b218b0af32c48161982c791

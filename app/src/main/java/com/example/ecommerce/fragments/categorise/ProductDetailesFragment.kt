@@ -17,6 +17,8 @@ import com.example.ecommerce.R
 import com.example.ecommerce.adapters.HomeViewPagerAdapter
 import com.example.ecommerce.adapters.ViewPagerImagerAdapter
 import com.example.ecommerce.databinding.FragmentProductDetailesBinding
+import com.example.ecommerce.utils.hideBottomNavigation
+import com.example.ecommerce.utils.showBottomNavigation
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -37,6 +39,7 @@ class ProductDetailesFragment : Fragment() {
         binding.lifecycleOwner = this
         productId = args.productId
         viewModel.getProductData(productId!!)
+        hideBottomNavigation()
         return binding.root
     }
 
@@ -51,14 +54,11 @@ class ProductDetailesFragment : Fragment() {
                 }
             }
         }
-//        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
-//            override fun handleOnBackPressed() {
-//                findNavController().popBackStack() // to clear previous navigation history
-//
-//            }
-//        })
 
     }
 
-
+    override fun onPause() {
+        super.onPause()
+        showBottomNavigation()
+    }
 }
