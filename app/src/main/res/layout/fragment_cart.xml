@@ -84,6 +84,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 setAdapter="@{adapter}"
                 submitList="@{viewModel.cartItems.toData().items}"
+                app:swipeToDelete="@{true}"
                 />
 
 

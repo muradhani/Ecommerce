@@ -249,3 +249,5 @@ y
 Iapp/src/main/java/com/example/ecommerce/utils/HideShowBottomNavigation.kt,2\3\236218b3bd2eae01df61c32a1cd16a973bc527d5
 m
 =domain/src/main/java/com/example/domain/entities/CartItems.kt,3\0\3081ff2217c359444b218b0af32c48161982c791
+}
+Mapp/src/main/java/com/example/ecommerce/bindingAdapters/CartBindingAdapter.kt,a\4\a4e0b5e4b5aa44152432a5c52909f38917e625d6

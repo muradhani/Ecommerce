@@ -18,6 +18,7 @@ abstract class BaseRecyclerViewAdapterAdapter< DB : ViewDataBinding,T>(initialDa
         diffResult.dispatchUpdatesTo(this)
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<DB> {
         val binding = DataBindingUtil.inflate<DB>(
             LayoutInflater.from(parent.context),

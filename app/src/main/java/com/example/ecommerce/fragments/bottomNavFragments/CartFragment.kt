@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.domain.entities.ProductCartEntitity
 import com.example.ecommerce.viewModels.CartFragmentViewModel
 import com.example.ecommerce.R
