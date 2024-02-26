@@ -7,4 +7,5 @@ import kotlinx.coroutines.flow.Flow
 interface CartRepoInterface {
     suspend fun addToCart(item : ProductCartEntitity): Flow<State<Boolean>>
     suspend fun getAllCartItem():Flow<State<List<ProductCartEntitity>>>
+    suspend fun DeleteItem(productCartEntitity: ProductCartEntitity):Flow<State<Int>>
 }

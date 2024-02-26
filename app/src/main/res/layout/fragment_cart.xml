@@ -85,6 +85,7 @@
                 setAdapter="@{adapter}"
                 submitList="@{viewModel.cartItems.toData().items}"
                 app:swipeToDelete="@{true}"
+                app:viewModel="@{viewModel}"
                 />
 
 

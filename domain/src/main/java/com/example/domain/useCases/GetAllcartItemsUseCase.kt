@@ -19,7 +19,7 @@ class GetAllcartItemsUseCase @Inject constructor(
                     for(item in items){
                         totalPrice += item.price*item.count
                     }
-                    emit(State.Success(CartItems(items,totalPrice)))
+                    emit(State.Success(CartItems(items.toMutableList(),totalPrice)))
                 }
             }
         }

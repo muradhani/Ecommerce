@@ -3,12 +3,13 @@ package com.example.ecommerce.bindingAdapters
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ecommerce.viewModels.CartFragmentViewModel
 
-@BindingAdapter("swipeToDelete")
-fun RecyclerView.setSwipeToDelete(enableSwipeToDelete: Boolean?) {
+@BindingAdapter("swipeToDelete", "viewModel")
+fun RecyclerView.setSwipeToDelete(enableSwipeToDelete: Boolean?,viewModel:CartFragmentViewModel) {
     if (enableSwipeToDelete!!) {
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
-            0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+            0, ItemTouchHelper.RIGHT
         ) {
             override fun onMove(
                 recyclerView: RecyclerView,
@@ -19,7 +20,7 @@ fun RecyclerView.setSwipeToDelete(enableSwipeToDelete: Boolean?) {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-
+                viewModel.deleteItem(viewHolder.layoutPosition)
             }
         }
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)

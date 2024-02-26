@@ -1,6 +1,6 @@
 package com.example.domain.entities
 
 data class CartItems(
-    val items : List<ProductCartEntitity>,
+    val items : MutableList<ProductCartEntitity>,
     val totalPrice:Int
 )

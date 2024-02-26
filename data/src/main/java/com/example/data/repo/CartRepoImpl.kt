@@ -29,4 +29,16 @@ class CartRepoImpl @Inject constructor(
             emit(State.Success(cartDao.getAllUserCartProducts()))
         }
     }
+
+    override suspend fun DeleteItem(product: ProductCartEntitity): Flow<State<Int>> {
+       return flow {
+           var result = cartDao.deleteItem(product)
+           if (result == 1) {
+               emit(State.Success(result))
+           }
+           else{
+               emit(State.Error("item not deleted"))
+           }
+       }
+    }
 }

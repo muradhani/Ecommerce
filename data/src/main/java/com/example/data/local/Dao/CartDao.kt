@@ -1,6 +1,7 @@
 package com.example.data.local.Dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.domain.entities.ProductCartEntitity
@@ -11,4 +12,7 @@ interface CartDao {
     suspend fun addProductToCart(item:ProductCartEntitity):Long
     @Query("SELECT * FROM cart")
     suspend fun getAllUserCartProducts():List<ProductCartEntitity>
+
+    @Delete
+    suspend fun deleteItem(item:ProductCartEntitity):Int
 }

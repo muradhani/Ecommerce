@@ -251,3 +251,7 @@ m
 =domain/src/main/java/com/example/domain/entities/CartItems.kt,3\0\3081ff2217c359444b218b0af32c48161982c791
 }
 Mapp/src/main/java/com/example/ecommerce/bindingAdapters/CartBindingAdapter.kt,a\4\a4e0b5e4b5aa44152432a5c52909f38917e625d6
+r
+Bdomain/src/main/java/com/example/domain/useCases/DeleteItemCart.kt,1\a\1aeb776b6fe620bc0183b49334a0c382970d85c7
+y
+Idomain/src/main/java/com/example/domain/useCases/DeleteItemCartUseCase.kt,5\d\5dc1510de76091de158971f6e91c5791cafe5424
