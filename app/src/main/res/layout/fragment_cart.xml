@@ -83,7 +83,7 @@
                 tools:listitem="@layout/cart_product_item"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 setAdapter="@{adapter}"
-                submitList="@{viewModel.cartItems.toData()}"
+                submitList="@{viewModel.cartItems.toData().items}"
                 />
 
 
@@ -132,6 +132,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="15dp"
                     android:fontFamily="@font/sf_pro_display"
+                    android:text="@{'$'+String.valueOf(viewModel.cartItems.toData().totalPrice)}"
                     tools:text="$150"
                     android:textColor="@color/black"
                     android:textSize="16sp"

@@ -9,7 +9,7 @@ class ProductToProductCart:Mapper<Product,ProductCartEntitity> {
             input.id,
             input.thumbnail,
             input.title,
-            0,
+            1,
             input.newprice
             )
     }

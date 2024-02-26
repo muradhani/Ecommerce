@@ -2,6 +2,7 @@ package com.example.ecommerce.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.domain.entities.CartItems
 import com.example.domain.entities.ProductCartEntitity
 import com.example.domain.models.states.State
 import com.example.domain.useCases.GetAllcartItemsUseCase
@@ -15,8 +16,8 @@ import javax.inject.Inject
 class CartFragmentViewModel @Inject constructor(
     private val getCartItem : GetAllcartItemsUseCase
 ) : ViewModel() {
-    private val _cartItems = MutableStateFlow<State<List<ProductCartEntitity>>>(State.Loading)
-    val cartItems :StateFlow<State<List<ProductCartEntitity>>> = _cartItems
+    private val _cartItems = MutableStateFlow<State<CartItems>>(State.Loading)
+    val cartItems :StateFlow<State<CartItems>> = _cartItems
    init {
        fetchCartItems()
    }

@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/g_white"
         app:cardCornerRadius="@dimen/_5sdp"
-        app:cardElevation="@dimen/_10sdp"
         android:layout_margin="@dimen/_15sdp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -65,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_light"
-                android:text="@{String.valueOf(product.price)+'$'}"
+                android:text="@{'$'+String.valueOf(product.price)}"
                 tools:text="$50"
                 android:textColor="@color/black"
                 android:textSize="10sp"
