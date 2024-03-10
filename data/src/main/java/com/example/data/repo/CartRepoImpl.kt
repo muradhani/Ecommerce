@@ -41,4 +41,16 @@ class CartRepoImpl @Inject constructor(
            }
        }
     }
+
+    override suspend fun replaceCountNumber(productId: Int, newCount: Int): Flow<State<Int>> {
+        return flow {
+            var result = cartDao.replaceProductCount(productId,newCount)
+            if (result == 1) {
+                emit(State.Success(result))
+            }
+            else{
+                emit(State.Error("item not deleted"))
+            }
+        }
+    }
 }

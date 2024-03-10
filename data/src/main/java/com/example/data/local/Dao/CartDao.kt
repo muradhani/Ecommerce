@@ -15,4 +15,8 @@ interface CartDao {
 
     @Delete
     suspend fun deleteItem(item:ProductCartEntitity):Int
+
+
+    @Query("UPDATE cart SET count = :newCount WHERE id = :productId")
+    suspend fun replaceProductCount(productId: Int, newCount: Int): Int
 }

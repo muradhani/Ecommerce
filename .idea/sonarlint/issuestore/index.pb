@@ -251,7 +251,19 @@ m
 =domain/src/main/java/com/example/domain/entities/CartItems.kt,3\0\3081ff2217c359444b218b0af32c48161982c791
 }
 Mapp/src/main/java/com/example/ecommerce/bindingAdapters/CartBindingAdapter.kt,a\4\a4e0b5e4b5aa44152432a5c52909f38917e625d6
-r
-Bdomain/src/main/java/com/example/domain/useCases/DeleteItemCart.kt,1\a\1aeb776b6fe620bc0183b49334a0c382970d85c7
 y
 Idomain/src/main/java/com/example/domain/useCases/DeleteItemCartUseCase.kt,5\d\5dc1510de76091de158971f6e91c5791cafe5424
+j
+:app/src/main/java/com/example/ecommerce/di/ecommerceApp.kt,2\0\202bcce0f64faada67030ce8cb297a7854eadf7c
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+
+Qdomain/src/main/java/com/example/domain/models/states/CheckEmailExistenceState.kt,5\5\554064a253cda8e42e42bfbc936897d7efe451e3
+n
+>domain/src/main/java/com/example/domain/models/states/State.kt,8\2\825350353e604cbda1657fd8f3cd977300e6d809
+x
+Hdomain/src/main/java/com/example/domain/useCases/GetLoginStateUseCase.kt,9\c\9c6eb91678c24bcb0f3fb39d40b245bdcbf64290
+|
+Ldomain/src/main/java/com/example/domain/useCases/CheckIfEmailExistUseCase.kt,a\a\aa31a0c54026e5be1af09a2558dfb91d05db1e21
+„
+Tdomain/src/main/java/com/example/domain/useCases/SetCartProductCountNumberUseCase.kt,3\5\35b646a9a5413a946c9aa0e24996a49b0912a7ae

@@ -9,6 +9,18 @@ data class ProductCartEntitity(
     val id: Int,
     val thumbnail: String,
     val title: String,
-    val count : Int,
-    val price: Int,
+    var count : Int,
+    var price: Int,
 )
+//{
+//    override fun equals(other: Any?): Boolean {
+//        if (this === other) return true
+//        if (other !is ProductCartEntitity) return false
+//
+//        return id == (other as ProductCartEntitity).id
+//    }
+//
+//    override fun hashCode(): Int {
+//        return id
+//    }
+//}

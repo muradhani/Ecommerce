@@ -98,7 +98,7 @@
                 android:id="@+id/tvCartProductQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"
+                android:text="@{String.valueOf(product.count)}"
                 app:layout_constraintTop_toBottomOf="@id/imageMinus"
                 app:layout_constraintEnd_toEndOf="@id/imageMinus"
                 app:layout_constraintBottom_toTopOf="@id/imagePlus"
